@@ -1,0 +1,11 @@
+from collections import deque
+def interleaveQueue(q):
+    n = len(q)
+    half = n // 2
+    q1 = deque()
+    for _ in range(half):
+        q1.append(q.popleft())
+    while q1:
+        q.append(q1.popleft())
+        q.append(q.popleft())
+    return list(q)
