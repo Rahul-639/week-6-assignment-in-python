@@ -1,0 +1,17 @@
+from collections import deque
+
+def reverseKElements(q, k):
+    if len(q) < k:
+        return list(q)
+
+    stack = []
+    for _ in range(k):
+        stack.append(q.popleft())
+
+    while stack:
+        q.append(stack.pop())
+
+    for _ in range(len(q) - k):
+        q.append(q.popleft())
+
+    return list(q)
